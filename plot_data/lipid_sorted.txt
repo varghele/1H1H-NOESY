@@ -1,0 +1,11 @@
+POPC
+CH3
+(CH2)n
+CH2-C=
+C-3
+C-2
+G-1
+G-3
+Alpha
+Beta
+Gamma
