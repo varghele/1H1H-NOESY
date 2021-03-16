@@ -1,0 +1,7 @@
+re
+math
+cmath
+scipy
+numpy
+matplotlib
+tkinter
