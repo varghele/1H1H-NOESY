@@ -1,5 +1,5 @@
 # 1H1H-NOESY
-Script(s) to calculate 1H-1H-NOESY MAS NMR cross relaxation rates and plot them
+##Script(s) to calculate 1H-1H-NOESY MAS NMR cross relaxation rates and plot them
 
 If you use the python version, run the requirements.txt with ```pip install -r requirements.txt```.
 
