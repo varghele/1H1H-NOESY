@@ -1,0 +1,20 @@
+SORT THE CHEMICAL PEAKS IN THE ORDER YOU INTEGRATED THEM
+
+SORT THE LIPID PEAKS IN THE ORDER YOU INTEGRATED THEM
+
+
+
+
+Furthermore here are some pretty colors that you can plot your bars in:
+
+#1f77b4 - a nice blue
+#aec7e8 - a lighter shade of blue
+#b41f77 - some sort of purple
+#ff7f0e - orange
+#ffbb78 - a lighter orange
+#2ca02c - green
+#77b41f - light green
+
+#b45c1f - complementary orange
+
+#000000 - black(for the edges)
