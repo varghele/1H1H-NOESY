@@ -14,6 +14,9 @@ from modules.NOESY2_custom import *
 lipid_data=open_file_sing('ini_data/lipid.txt')
 ###READ THE CHEMICAL FILE
 chemical_data=open_file_sing('ini_data/chemical.txt')
+###READ THE FIT_DATA FILE
+fit_start_data = open_file_mult('ini_data/fit_start_values.txt')
+fit_start_data = [[float(j) for j in i] for i in fit_start_data]
 
 ###MAKING the directories to store the data in
 dir="zresults"
@@ -240,7 +243,7 @@ for peak_chemical in range(len(chemical_data)-1):
 		if len(t_m_calc)>3:
 			if (len(t_m_calc)==4):
 				#SOLVING 4 EQUATIIONS
-				start_values=[[0.01,0.4],[1,1],[0.1,0.4],[0.1,7],[5,0.5],[0.5,5],[0.2,0.9],[0.27,0.42]]
+				start_values=fit_start_values
 				#Initial Solving of the fit, LEVENBERG MARQUARDT
 				sol=root(levenberg4,[0.001,0.4],args=(A_is_calc,t_m_calc,A_ii_0),jac=True,method='lm')
 				ini_error=np.sum((sol.fun-np.array(A_is_calc))**2)
@@ -256,7 +259,7 @@ for peak_chemical in range(len(chemical_data)-1):
 				
 			elif (len(t_m_calc)==5):
 				#SOLVING 5 EQUATIONS
-				start_values=[[0.01,0.4],[1,1],[0.1,0.4],[0.1,7],[5,0.5],[0.5,5],[0.2,0.9],[0.27,0.42]]
+				start_values=fit_start_values
 				#Initial Solving of the fit, LEVENBERG MARQUARDT
 				sol=root(levenberg5,[0.001,0.4],args=(A_is_calc,t_m_calc,A_ii_0),jac=True,method='lm')
 				ini_error=np.sum((sol.fun-np.array(A_is_calc))**2)
