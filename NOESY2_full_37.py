@@ -16,7 +16,7 @@ lipid_data=open_file_sing('ini_data/lipid.txt')
 chemical_data=open_file_sing('ini_data/chemical.txt')
 ###READ THE FIT_DATA FILE
 fit_start_data = open_file_mult('ini_data/fit_start_values.txt')
-fit_start_data = [[float(j) for j in i] for i in fit_start_data]
+fit_start_values = [[float(j) for j in i] for i in fit_start_data]
 
 ###MAKING the directories to store the data in
 dir="zresults"
@@ -124,28 +124,28 @@ for peak_chemical in range(len(chemical_data)-1):
 	dat.write("0.1")
 	for peak_lipid in range(len(lipid_data)-1):
 		dat.write("	")
-		dat.write(N100ms[peak_chemical*10+peak_lipid][integral_location])
+		dat.write(N100ms[peak_chemical*(len(lipid_data)-1)+peak_lipid][integral_location])
 	dat.write("\n")
 	
 	#200ms
 	dat.write("0.2")
 	for peak_lipid in range(len(lipid_data)-1):
 		dat.write("	")
-		dat.write(N200ms[peak_chemical*10+peak_lipid][integral_location])
+		dat.write(N200ms[peak_chemical*(len(lipid_data)-1)+peak_lipid][integral_location])
 	dat.write("\n")
 	
 	#300ms
 	dat.write("0.3")
 	for peak_lipid in range(len(lipid_data)-1):
 		dat.write("	")
-		dat.write(N300ms[peak_chemical*10+peak_lipid][integral_location])
+		dat.write(N300ms[peak_chemical*(len(lipid_data)-1)+peak_lipid][integral_location])
 	dat.write("\n")
 	
 	#500ms
 	dat.write("0.5")
 	for peak_lipid in range(len(lipid_data)-1):
 		dat.write("	")
-		dat.write(N500ms[peak_chemical*10+peak_lipid][integral_location])
+		dat.write(N500ms[peak_chemical*(len(lipid_data)-1)+peak_lipid][integral_location])
 	dat.write("\n")
 	
 	#Closing
@@ -222,10 +222,10 @@ for peak_chemical in range(len(chemical_data)-1):
 		#Make the A_is list for the function solver
 		A_is=[]
 		A_is.append(0)
-		A_is.append(float(N100ms[peak_chemical*10+peak_lipid][integral_location]))
-		A_is.append(float(N200ms[peak_chemical*10+peak_lipid][integral_location]))
-		A_is.append(float(N300ms[peak_chemical*10+peak_lipid][integral_location]))
-		A_is.append(float(N500ms[peak_chemical*10+peak_lipid][integral_location]))
+		A_is.append(float(N100ms[peak_chemical*(len(lipid_data)-1)+peak_lipid][integral_location]))
+		A_is.append(float(N200ms[peak_chemical*(len(lipid_data)-1)+peak_lipid][integral_location]))
+		A_is.append(float(N300ms[peak_chemical*(len(lipid_data)-1)+peak_lipid][integral_location]))
+		A_is.append(float(N500ms[peak_chemical*(len(lipid_data)-1)+peak_lipid][integral_location]))
 		
 		#Define the Integral at t=0
 		A_ii_0=float(N01ms[peak_lipid][integral_location])
@@ -401,6 +401,7 @@ sigma_error_old_transposed=np.array(sigma_error_array).transpose()
 #Rearranging the sigma-array
 for peak_lipid in range(1,len(lipid_data)):
 	ni=lipid_sorted.index(lipid_data[peak_lipid])
+	print(ni)
 	sigma_new[ni-1]=sigma_old_transposed[peak_lipid-1]
 	sigma_error_new[ni-1]=sigma_error_old_transposed[peak_lipid-1]
 
